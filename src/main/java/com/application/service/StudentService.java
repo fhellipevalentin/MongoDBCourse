@@ -2,6 +2,8 @@ package com.application.service;
 
 import com.application.entity.Student;
 import com.application.repository.StudentRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -48,5 +50,11 @@ public class StudentService {
 
     public List<Student> studentByNameOrEmail(String name, String email) {
         return repository.findByNameOrEmail(name, email);
+    }
+
+    public List<Student> getAllWithPagination(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+
+        return repository.findAll(pageable).getContent();
     }
 }
