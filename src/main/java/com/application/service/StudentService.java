@@ -57,4 +57,8 @@ public class StudentService {
 
         return repository.findAll(pageable).getContent();
     }
+
+    public List<Student> byDepartmentName(String department) {
+        return repository.findByDepartmentDepartmentName(department);
+    }
 }
