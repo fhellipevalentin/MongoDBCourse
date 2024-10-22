@@ -5,7 +5,6 @@ import com.application.repository.StudentRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
@@ -60,5 +59,9 @@ public class StudentService {
 
     public List<Student> byDepartmentName(String department) {
         return repository.findByDepartmentDepartmentName(department);
+    }
+
+    public List<Student> bySubjectName(String subjectName) {
+        return repository.findBySubjectsSubjectName(subjectName);
     }
 }

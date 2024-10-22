@@ -65,4 +65,10 @@ public class StudentController {
     public List<Student> byDepartmentName(@RequestParam String departmentName) {
         return studentService.byDepartmentName(departmentName);
     }
+
+    // buscando por valor de array
+    @GetMapping("/bySubjectName")
+    public List<Student> bySubjectName(@RequestParam String subjectName) {
+        return studentService.bySubjectName(subjectName);
+    }
 }
