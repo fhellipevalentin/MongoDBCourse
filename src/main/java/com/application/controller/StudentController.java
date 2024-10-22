@@ -3,7 +3,6 @@ package com.application.controller;
 
 import com.application.entity.Student;
 import com.application.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @RequestMapping("/api/student")
 public class StudentController {
 
-    @Autowired
-    StudentService studentService;
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @PostMapping("/create")
     public Student createStudent(@RequestBody Student student) {
@@ -58,6 +60,7 @@ public class StudentController {
         return studentService.getAllWithPagination(pageNo, pageSize);
     }
 
+    // buscando subdocumento de documento
     @GetMapping("/byDepartmentName")
     public List<Student> byDepartmentName(@RequestParam String departmentName) {
         return studentService.byDepartmentName(departmentName);
